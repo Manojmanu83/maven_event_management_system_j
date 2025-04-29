@@ -9,8 +9,8 @@ pipeline {
         }
         stage('Run nginix container') {
             steps {
-                sh 'docker stop nginx-container || true'
-                sh 'docker rm nginx-container || true'
+                sh 'docker stop app || true'
+                sh 'docker rm app || true'
                 sh 'docker run -it -d --name app -p 80:80 nginx'
             }
         }
