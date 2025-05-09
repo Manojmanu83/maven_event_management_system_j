@@ -1,17 +1,18 @@
 pipeline {
     agent any
+    tools {
+        maven 'maven'
+    }
 
     stages {
-        stage('Pull nginix  image') {
+        stage('Pull src') {
             steps {
-                sh 'docker pull nginx'
+                git branch:'master', url:'https://github.com/Manojmanu83/maven_event_management_system_j.git'
             }
         }
-        stage('Run nginix container') {
+        stage('Prep build') {
             steps {
-                sh 'docker stop app || true'
-                sh 'docker rm app || true'
-                sh 'docker run -it -d --name app -p 80:80 nginx'
+                sh 'mvn clean package' 
             }
         }
     }
