@@ -7,7 +7,8 @@ pipeline {
     stages {
         stage('Run doc cont') {
             steps {
-                sh "docker run -it -d --name app nginx"
+                sh "docker rm -f app"
+                sh "docker run -it -d --name app -p 80:9200 nginx"
             }
         }
     }
