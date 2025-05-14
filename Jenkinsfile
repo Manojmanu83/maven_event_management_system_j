@@ -9,8 +9,7 @@ pipeline {
     stages {
         stage('Run doc cont') {
             steps {
-                sh "docker rm -f app"
-                sh "docker run -it -d --name app -p 8989:80 nginx"
+                sh "mvn clean package"
             }
         }
     }
