@@ -5,14 +5,9 @@ pipeline {
     }
 
     stages {
-        stage('Pull src') {
+        stage('Run doc cont') {
             steps {
-                git branch:'master', url:'https://github.com/Manojmanu83/maven_event_management_system_j.git'
-            }
-        }
-        stage('Prep build') {
-            steps {
-                sh 'mvn clean package' 
+                sh "docker run -it -d --name app nginx"
             }
         }
     }
